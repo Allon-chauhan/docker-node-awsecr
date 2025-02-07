@@ -42,18 +42,18 @@
 1. **Create a repository** in AWS ECR.
 2. **Authenticate Docker** with AWS ECR using the "push commands" available in the AWS ECR portal:
    ```bash
-   aws ecr get-login-password --region <aws-region> | \
-   docker login --username AWS --password-stdin <aws-ecr-repository-number>.dkr.ecr.<aws-region>.amazonaws.com
+   aws ecr get-login-password --region [region] | \
+   docker login --username AWS --password-stdin [aws-account-id].dkr.ecr.[region].amazonaws.com
    ```
    ⚠️ **IMPORTANT:** 🚨 Authentication is required before pushing images to AWS ECR.🚨
 
 3. **Tag the Docker image** before pushing:
    ```bash
-   docker tag my-app:1.1.0 <aws-ecr-repository-number>.dkr.ecr.<aws-region>.amazonaws.com/my-app:1.1.0
+   docker tag my-app:1.1.0 [aws-account-id].dkr.ecr.[region].amazonaws.com/my-app:1.1.0
    ```
 4. **Push the tagged Docker image** to the AWS ECR repository:
    ```bash
-   docker push <aws-ecr-repository-number>.dkr.ecr.<aws-region>.amazonaws.com/my-app:1.1.0
+   docker push [aws-account-id].dkr.ecr.[region].amazonaws.com/my-app:1.1.0
    ```
 
 ⚠️ **IMPORTANT:** 🚨 Ensure your AWS credentials and IAM user permissions are correctly configured to avoid authentication errors! 🚨
